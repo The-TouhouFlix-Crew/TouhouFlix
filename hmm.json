@@ -5,6 +5,30 @@
             "dir": null,
             "ref": "develop",
             "url": "https://github.com/The-TouhouFlix-Crew/lime"
+        },
+        "openfl": {
+            "type": "git",
+            "dir": null,
+            "ref": "develop",
+            "url": "https://github.com/The-TouhouFlix-Crew/openfl"
+        },
+        "flixel": {
+            "type": "git",
+            "dir": null,
+            "ref": "dev",
+            "url": "https://github.com/The-TouhouFlix-Crew/flixel"
+        },
+        "hxcpp": {
+            "type": "git",
+            "dir": null,
+            "ref": "master",
+            "url": "https://github.com/The-TouhouFlix-Crew/hxcpp"
+        },
+        "hxp": {
+            "type": "git",
+            "dir": null,
+            "ref": "master",
+            "url": "https://github.com/The-TouhouFlix-Crew/hxp"
         }
     }
 }
