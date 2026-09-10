@@ -1,0 +1,10 @@
+{
+    "dependencies": {
+        "lime": {
+            "type": "git",
+            "dir": null,
+            "ref": "develop",
+            "url": "https://github.com/The-TouhouFlix-Crew/lime"
+        }
+    }
+}
