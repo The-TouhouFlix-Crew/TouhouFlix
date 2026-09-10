@@ -1,0 +1,43 @@
+class Project extends HXProject {
+	override public function new() {
+		super();
+
+		app.title = "TouhouFlix";
+		app.file = "TouhouFlix";
+		app.packageName = "com.touhouflix.crew";
+		app.version = "0.0.1";
+		app.company = "The TouhouFlix Crew";
+
+		app.main = "Main";
+
+		source.add("source");
+
+		window.width = 1280;
+		window.height = 720;
+		window.fps = 60;
+		window.hardware = true;
+		window.vsync = false;
+		window.resizable = true;
+
+		meta.title = "TouhouFlix";
+		meta.description = "A Touhou engine using Haxe";
+		meta.package = "com.touhouflix.crew";
+		meta.version = "0.0.1";
+		meta.company = "The TouhouFlix Crew";
+
+		haxedef("openfl-vector");
+
+		targetHandlers.set("windows", handleWindows);
+		targetHandlers.set("linux", handleLinux);
+		targetHandlers.set("android", handleAndroid);
+	}
+
+	function handleWindows() {
+	}
+
+	function handleLinux() {
+	}
+
+	function handleAndroid() {
+	}
+}
