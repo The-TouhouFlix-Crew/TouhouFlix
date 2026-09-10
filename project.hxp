@@ -7,7 +7,6 @@ class Project extends HXProject {
 		app.packageName = "com.touhouflix.crew";
 		app.version = "0.0.1";
 		app.company = "The TouhouFlix Crew";
-
 		app.main = "Main";
 
 		source.add("source");
@@ -15,9 +14,13 @@ class Project extends HXProject {
 		window.width = 1280;
 		window.height = 720;
 		window.fps = 60;
+		window.background = "#000000";
 		window.hardware = true;
 		window.vsync = false;
 		window.resizable = true;
+		window.orientation = Orientation.LANDSCAPE;
+		window.allowHighDPI = true;
+		window.antialiasing = 0;
 
 		meta.title = "TouhouFlix";
 		meta.description = "A Touhou engine using Haxe";
@@ -25,19 +28,56 @@ class Project extends HXProject {
 		meta.version = "0.0.1";
 		meta.company = "The TouhouFlix Crew";
 
+		haxelib(new Haxelib("lime"));
+		haxelib(new Haxelib("openfl"));
+		haxelib(new Haxelib("flixel"));
+
 		haxedef("openfl-vector");
+		haxedef("no-deprecation-warnings");
+		haxedef("HXCPP_CHECK_POINTER");
+		haxedef("HXCPP_STACK_TRACE");
+		haxedef("FLX_NO_FOCUS_LOST_SCREEN");
+
+		if (target == Platform.HTML5) {
+			haxedef("html5");
+		}
+
+		if (targetFlags.exists("32bit")) {
+			architectures = [Architecture.X86];
+		} else if (targetFlags.exists("64bit")) {
+			architectures = [Architecture.X64];
+		} else {
+			architectures = [Architecture.X64, Architecture.ARM64];
+		}
+
+		permission("android.permission.INTERNET");
+		permission("android.permission.WRITE_EXTERNAL_STORAGE");
+		permission("android.permission.READ_EXTERNAL_STORAGE");
+		permission("android.permission.VIBRATE");
+
+		config("android:minimum-sdk-version", "21");
+		config("android:target-sdk-version", "33");
 
 		targetHandlers.set("windows", handleWindows);
 		targetHandlers.set("linux", handleLinux);
 		targetHandlers.set("android", handleAndroid);
+		targetHandlers.set("html5", handleHTML5);
 	}
 
 	function handleWindows() {
+		haxedef("desktop");
 	}
 
 	function handleLinux() {
+		haxedef("desktop");
 	}
 
 	function handleAndroid() {
+		haxedef("mobile");
+		architectures = [Architecture.ARM64, Architecture.ARMV7];
+	}
+
+	function handleHTML5() {
+		haxedef("web");
 	}
 }
